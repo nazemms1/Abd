@@ -120,7 +120,6 @@ export default function Hero() {
             gap: "2rem",
           }}
         >
-          {/* Left: Text content */}
           <Stack gap={0}>
             <motion.div
               custom={0}
@@ -310,7 +309,6 @@ export default function Hero() {
             </motion.div>
           </Stack>
 
-          {/* Right: Neural network canvas */}
           <div style={{ position: "relative", width: "100%", height: 420 }}>
             <NeuralCanvas />
           </div>

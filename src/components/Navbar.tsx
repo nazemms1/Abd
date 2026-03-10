@@ -21,6 +21,7 @@ const navLinks = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [opened, setOpened] = useState(false);
+  const [active, setActive] = useState("");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -28,20 +29,59 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const links = navLinks.map((link) => (
-    <Anchor
-      key={link.href}
-      href={link.href}
-      onClick={() => setOpened(false)}
-      c="dimmed"
-      fw={500}
-      fz="sm"
-      style={{ transition: "color 0.2s" }}
-      styles={{ root: { "&:hover": { color: "var(--mantine-color-text)" } } }}
-    >
-      {link.label}
-    </Anchor>
-  ));
+  useEffect(() => {
+    const sectionIds = navLinks.map((l) => l.href.replace("#", ""));
+    const observers: IntersectionObserver[] = [];
+
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const obs = new IntersectionObserver(
+        ([entry]) => { if (entry.isIntersecting) setActive(id); },
+        { threshold: 0.35 }
+      );
+      obs.observe(el);
+      observers.push(obs);
+    });
+
+    return () => observers.forEach((o) => o.disconnect());
+  }, []);
+
+  const links = navLinks.map((link) => {
+    const id = link.href.replace("#", "");
+    const isActive = active === id;
+    return (
+      <Anchor
+        key={link.href}
+        href={link.href}
+        onClick={() => setOpened(false)}
+        fw={500}
+        fz="sm"
+        underline="never"
+        style={{
+          color: isActive ? "#0b63e5" : "var(--mantine-color-dimmed)",
+          transition: "color 0.2s",
+          position: "relative",
+        }}
+      >
+        {link.label}
+        {isActive && (
+          <span
+            style={{
+              position: "absolute",
+              bottom: -4,
+              left: 0,
+              right: 0,
+              height: 2,
+              borderRadius: 2,
+              background: "linear-gradient(90deg, #0b63e5, #5f97f1)",
+              boxShadow: "0 0 8px rgba(11,99,229,0.7)",
+            }}
+          />
+        )}
+      </Anchor>
+    );
+  });
 
   return (
     <>
