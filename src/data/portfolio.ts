@@ -41,15 +41,7 @@ export const experience: Experience[] = [
     type: "Full-time",
     period: "Jul 2025 - Present",
     location: "United Arab Emirates, UAE",
-    bullets: [
-      "Fine-tuned and evaluated transformer-based models (BERT, RoBERTa, XLM-RoBERTa, E5, ModernBERT, MARBERT, Arabert) and LLMs (Qwen2.5, DeepSeek-R1) for sentiment classification (Arabic & English).",
-      "Used Hugging Face Transformers, Torchtune, Unsloth, and Optuna for training and optimization.",
-      "Deployed ONNX models via Triton; built and integrated inference APIs into Django.",
-      "Built a FastAPI-based labelling platform with multi-role access and multiple NLP/voice tasks.",
-      "Built an analytics service to process and visualize social data from X (Twitter) and integrated it into Django.",
-      "Applied data preprocessing and cleaning for fine-tuning and labeling tasks; implemented tweet deduplication using Jaccard similarity with MinHash LSH.",
-      "Contributed to backend and system design of a WasteManagement ERP using ABP Framework.",
-    ],
+    bullets: [],
   },
   {
     title: "AI Engineer | Backend Developer",
