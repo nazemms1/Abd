@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install framer-motion @tsparticles/react @tsparticles/slim)",
+      "Bash(npm install framer-motion)",
+      "Bash(npm list framer-motion react-tsparticles @tsparticles/slim)",
+      "Bash(npm list react-tsparticles tsparticles)",
+      "Bash(npm install @tsparticles/slim @tsparticles/react @tsparticles/engine framer-motion --legacy-peer-deps)",
+      "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(d.get\\(''main'',''''\\), d.get\\(''module'',''''\\), d.get\\(''exports'',''''\\)[:200] if d.get\\(''exports''\\) else ''''\\)\")",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); [print\\(k,'':'',v\\) for k,v in d.get\\(''dependencies'',{}\\).items\\(\\)]\")",
+      "Bash(npm install @tsparticles/shape-image)",
+      "Bash(npm install @tsparticles/shape-image@3.9.1 --save)"
+    ]
+  }
+}
